@@ -38,6 +38,7 @@ table#movies {
   border-collapse: collapse;
   width: 100%;
   border-bottom: 2px solid black;
+
 }
 table#movies th {
   border: 2px solid white;
@@ -47,6 +48,9 @@ table#movies th {
 table#movies th, table#movies td {
   padding: 4px;
   text-align: left;
+}
+table#movies th.hilite {
+  background-color: yellow;
 }
 #notice #warning {
   background: rosybrown;

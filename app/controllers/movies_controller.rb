@@ -1,4 +1,4 @@
-class MoviesController < ApplicationController
+class MoviesController < ApplicationController  
 
   def movie_params
     params.require(:movie).permit(:title, :rating, :description, :release_date)
@@ -11,7 +11,13 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
+    if params[0] == "sort"
+      @movies = Movie.all.order(:title)
+      flash[:notice] = "Sorted"
+      movies.reload()
+    else
+      @movies = Movie.all
+    end
   end
 
   def new
@@ -42,4 +48,9 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
 
+  def sort
+    @movies = Movie.all.order(:title)
+    flash[:notice] = "Sorted"
+    redirect_to movies_path
+  end
 end
