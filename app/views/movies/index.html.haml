@@ -9,7 +9,7 @@
         - if @ratings.empty?
           = check_box_tag "ratings[#{rating}]", 1, true, :id=>"ratings_#{rating}"
         - else
-          = check_box_tag "ratings[#{rating}]", 1, @ratings[rating], :id=>"ratings_#{rating}"
+          = check_box_tag "ratings[#{rating}]", 1, session[:ratings][rating], :id=>"ratings_#{rating}"
       = submit_tag 'Refresh', :id=>"ratings_submit"
     %tr
       %th{class: @title_klass}= link_to "Movie Title", movies_path(:sort=>"title"), :id=>"title_header"
